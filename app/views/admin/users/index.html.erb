@@ -1,0 +1,49 @@
+<% require 'pry' %>
+
+<h3>Grant Application</h3>
+
+<table class="table table-hover">
+  
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Organization</th>
+      <th>Email</th>
+      <th>Phone Num</th>
+      <th>Admin?</th>
+    </tr>
+  </thead>
+
+  <% @users.each do |g| %>
+    <tr class="clickableRow usersTable" href="/admin/users/<%=g.id%>">
+      <td><%= g.id %></td>
+      <td><%= g.username %></td>
+      <td><%= g.first_name %></td>
+      <td><%= g.last_name %></td>
+      <td><%= g.org_name %></td>
+      <td><%= g.email %></td>
+      <td><%= g.phone_number %></td>
+      <td><%= g.is_admin %></td>
+    </tr>
+  <% end %>
+
+</table>
+
+<script type="text/javascript">
+  $('.usersTable').click(function() {
+    // row was clicked
+    console.log("sup world");
+    window.location = $(this).attr("href");
+  });
+
+  $('.usersTable').hover(function() {
+        $(this).css('cursor','hand');
+    });
+  $(".applicationsTable a").click( function(event) {
+    event.stopPropagation();
+  } );
+
+</script>

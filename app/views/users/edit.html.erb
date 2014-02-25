@@ -1,0 +1,66 @@
+<%= link_to "Back to Welcome Page", root_path %>
+
+<h3>Update Your Information</h3>
+
+<%= form_for @user do |f| %>
+
+<% if @user.errors.any? %>
+<div>
+  <%= pluralize(@user.errors.count, "error")%> prevented this contact from being created: 
+    <ul>
+      <%= @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<div>
+  <%= f.label "first_name", "First Name: " %><br/>
+  <%= f.text_field :first_name %>
+</div>
+<div>
+  <%= f.label "middle_initial", "Middle Initial: " %><br/>
+  <%= f.text_field :middle_initial %>
+</div>
+<div>
+  <%= f.label "last_name", "Last Name: " %><br/>
+  <%= f.text_field :last_name %>
+</div>
+<div>
+  <%= f.label "org_name", "Organization Name: " %><br/>
+  <%= f.text_field :org_name %>
+</div>
+<div>
+  <%= f.label "role_in_org", "Role in Organization: " %><br/>
+  <%= f.text_field :role_in_org %>
+</div>
+<div>
+  <%= f.label "org_website", "Organization Website: " %><br/>
+  <%= f.text_field :org_website %>
+</div>
+<div>
+  <%= f.label "phone_number", "Phone Number: " %><br/>
+  <%= f.text_field :phone_number %>
+</div>
+<div>
+  <%= f.label "email", "Email: " %><br/>
+  <%= f.text_field :email %>
+</div>
+<div>
+  <%= f.label "password" %><br/>
+  <%= f.password_field "password" %>
+</div>
+<div>
+  <%= f.label "password_confirmation" %><br/>
+  <%= f.password_field "password_confirmation" %>
+</div>
+<div>
+  <%= f.label "about", "About: " %><br/>
+  <%= f.text_area :about %>
+</div>
+<div><%= f.submit "Create Account" %></div>
+<% end %>
+
+ 

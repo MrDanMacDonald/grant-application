@@ -1,0 +1,30 @@
+<%= link_to "Go back to profile", user_path(@user) %>
+
+<h3>Your contact information | <%= link_to "edit", edit_user_path(@user) %></h3>
+<p>Your name: <%= @user.first_name %> <%= @user.middle_initial%> <%= @user.last_name %></p>
+<p>Organization: <strong><%= @user.org_name %></strong></p>
+<p>Website: <%= @user.org_website %></p>
+<p>Role: <i><%= @user.role_in_org %></i></p>
+<p>Email: <%= @user.email %></p>
+<p>Phone Number: <%= @user.phone_number %></p>
+
+
+
+<h3>Apply Now</h3>
+<%= form_for @grant_application do |f| %>
+  <div>
+    <%= f.label "request_amount" %><br/>
+    <%= f.text_field "request_amount" %>
+  </div>
+  <div>
+    <%= f.label "intended_use" %><br/>
+    <%= f.text_area "intended_use" %>
+  </div>
+  <div>
+    <%= f.file_field :attachment %>
+    
+  </div>
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

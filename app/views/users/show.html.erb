@@ -1,0 +1,50 @@
+<h1> Welcome!</h1>
+
+To apply for a grant, please visit our <%= link_to "Create a New Application", new_grant_application_path %> page.</br></br>
+
+
+<h3>Application History</h3> <br />
+
+
+<table class="table table-hover">
+  
+  <thead>
+    <tr>
+      <th>Date Applied</th>
+      <th>Status</th>
+      <th>Attachment</th>
+
+
+    </tr>
+  </thead>
+	
+	<% @user.grant_applications.each do |g| %>
+
+    <tr class="clickableRow applicationsTable" href="/admin/grant_applications/<%=g.id%>">
+      <!-- <td><%=  %></td> -->
+      <td><%= g.created_at %></td>
+      <td><%= g.status %></td>
+      <!-- File button -->
+      <% if g.attachment_url != nil %>
+      <td style="padding: 1px; height: 25px;"><%= button_to g.attachment_url, {class: "btn btn-small moveUp"} do %>
+       File <i class="icon-paperclip"></i>
+        <% end %>
+
+      <% end %></td>
+
+
+    </tr>
+
+  <% end %>
+
+  </table>
+<!-- 
+<% @user.grant_applications.each do |ap| %>
+	<% unless ap.attachment_url.nil? %>
+	<br/>
+	<%= link_to "Attachment", ap.attachment_url %>
+
+		<button><a href="/remove_attachment?app_id=<%=ap.id%>">delete</a></button>
+	<% end %>
+<% end %>
+ -->

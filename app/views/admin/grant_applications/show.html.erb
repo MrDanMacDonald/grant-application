@@ -1,0 +1,12 @@
+<h1>this is admin show</h1>
+<%= link_to "Back to admin home", admin_grant_applications_path %>
+
+<%= @grant_application.request_amount %> <br/>
+<%= @grant_application.intended_use %><br/>
+<!-- comments should maybe be moved to it's own table.  -->
+<%= @grant_application.comments %> <br/>
+<%= @grant_application.status %> <br/>
+<%= link_to @grant_application.attachment, @grant_application.attachment_url %><br/>
+
+
+<%= link_to "Enter Review Zone", edit_admin_grant_application_path %>

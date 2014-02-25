@@ -1,0 +1,70 @@
+<h1>Create New Subscription</h1>
+
+<%= form_for @subscription, url: subscriptions_path do |f| %>
+  <div>
+    <%= f.label "Plan Type" %>
+    <%= f.collection_select :plan_id, Plan.all, :id, :name %>
+  </div>
+
+  <div>
+    <label for="Card Number">Card Number</label>
+    <input name="Card Number" class="card-number" value="4242424242424242" />
+  </div>
+
+  <div>
+    <label for="CVV">CVV</label>
+    <input name="CVV" class="card-cvc" value="123"/>
+  </div>
+
+  <div>
+    <label for="Expiry Month">Expiry Month</label>
+    <input name="Expiry Month" class="card-expiry-month" value="02"/>
+  </div>
+
+  <div>
+    <label for "Expiry Year">Expiry Year</label>
+    <input name="Expiry Year" class="card-expiry-year" value="2018"/>
+  </div>
+
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey("pk_test_UFnp9EVZAOuptUgx1DJT6Bqr");
+
+  function stripeResponseHandler(status, response) {
+    console.log(response);
+
+    if (response.error) {
+      // ...
+      // // show the errors on the form
+      // $(".payment-errors").text(response.error.message);
+    } else {
+      var form$ = $("#new_subscription");
+      // token contains id, last4, and card type
+      var token = response['id'];
+      // insert the token into the form so it gets submitted to the server
+      form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+      // and submit
+      form$.get(0).submit(); // <- This is where we get into rubyland
+    }
+  }
+
+
+  $("#new_subscription").submit(function( e ) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    Stripe.card.createToken({
+      number: $('.card-number').val(),
+      cvc: $('.card-cvc').val(),
+      exp_month: $('.card-expiry-month').val(),
+      exp_year: $('.card-expiry-year').val()
+    }, stripeResponseHandler);
+  });
+  
+</script>
+

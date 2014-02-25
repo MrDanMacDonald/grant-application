@@ -1,0 +1,15 @@
+<h3>User Info</h3>
+<div class="col-md-offset-1">
+	<%= link_to "Back to User List", admin_users_path %><br/>
+	<pre><br/>
+	                 Id: <%= @user.id %> <br/>
+	           Username: <%= @user.username %><br/>
+     No of Applications: <%= @user.grant_applications.count %> <br/>
+	               Name: <%= @user.first_name %> <%= @user.last_name %><br/>
+	       Organization: <%= @user.org_name %> <br/>
+	        Role in Org: <%= @user.email %> <br/>
+	              Phone: <%= @user.phone_number %> <br/>
+	       Date Created: <%= @user.created_at.strftime('%Y-%m-%d') %> <br/>
+	            Admin? : <%= @user.is_admin %> <br/>
+	</pre>
+</div>

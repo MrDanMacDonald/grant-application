@@ -1,0 +1,61 @@
+<h3>Grant Application</h3>
+
+<table class="table table-hover">
+  
+  <thead>
+    <tr>
+      <th>Date of Application</th>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Request Amount</th>
+      <th>Status</th>
+      <th>Attachment</th>
+
+
+    </tr>
+  </thead>
+
+  <% @grant_applications.each do |g| %>
+    
+    <tr class="clickableRow applicationsTable" href="/admin/grant_applications/<%=g.id%>/edit">
+      <th><%= g.created_at.strftime('%Y-%m-%d') %></th>
+      <td><%= g.id %></td>
+
+      <td>
+          <% if g.user.username %>
+            <%= g.user.username %>
+          <% else %>
+            <%= g.user.email %>
+          <% end %>
+      </td>
+      <td><%= g.request_amount %></td>
+      <td><%= g.status %></td>
+      <!-- File button -->
+      <% if g.attachment_url != nil %>
+      <td style="padding: 1px;"><%= button_to g.attachment_url, {class: "btn btn-small", method: :get} do %>
+       File <i class="icon-paperclip"></i>
+        <% end %>
+      <% end %></td>
+      <td>
+
+    </tr>
+
+  <% end %>
+
+</table>
+
+<script type="text/javascript">
+  $('.applicationsTable').click(function() {
+    // row was clicked
+    console.log("sup world");
+    window.location = $(this).attr("href");
+  });
+
+  $('.applicationsTable').hover(function() {
+        $(this).css('cursor','hand');
+    });
+  $(".applicationsTable a").click( function(event) {
+    event.stopPropagation();
+  } );
+
+</script>
