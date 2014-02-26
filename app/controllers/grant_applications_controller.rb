@@ -14,7 +14,6 @@ class GrantApplicationsController < ApplicationController
   def new
     @user = User.find(session[:user_id])
     @grant_application = @user.grant_applications.new
-    #@grant_application = GrantApplication.new
   end
 
   def create
@@ -34,8 +33,6 @@ class GrantApplicationsController < ApplicationController
   end
 
   protected
-
-
 
   def grant_application_params
     params.require(:grant_application).permit(:request_amount, :intended_use, :attachment)

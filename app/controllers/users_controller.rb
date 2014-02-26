@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   before_filter :current_user
 
   before_filter :if_not_user_redirect, only: [:show, :edit, :update] 

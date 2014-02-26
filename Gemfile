@@ -64,7 +64,6 @@ gem 'pry'
 gem 'carrierwave'
 # Heroku from https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
 gem 'rails_12factor', group: :production
-# Stripe from https://github.com/stripe/stripe-ruby
-gem 'stripe'
+
 
 ruby "2.0.0"
