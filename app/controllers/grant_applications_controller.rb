@@ -19,11 +19,13 @@ class GrantApplicationsController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     @grant_application = @user.grant_applications.new(grant_application_params)
-
+    @admins = User.where(is_admin: true)
     if @grant_application.save
+      UserMailer.thankyou_email(@user).deliver
+      AdminMailer.admin_notification_email(@admins, @grant_application).deliver
       redirect_to user_path(@user.id)
     else 
-      render :new #,notice: "Your application did not go through."
+      render :new, notice: "Your application was not successfully submitted"
     end
   end
 

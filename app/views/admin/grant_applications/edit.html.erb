@@ -2,37 +2,34 @@
 <%= @grant_application.user.first_name%> 
 <%= @grant_application.user.last_name%> from 
 <%= @grant_application.user.org_name %></h2>
-<%= link_to "user info", admin_user_path(@grant_application.user) %> | 
-<%= link_to "delete request", admin_grant_application_path(@grant_application), method: :delete, confirm: "You sure?" %> <br/><br/>
+<%= link_to "User Information", admin_user_path(@grant_application.user) %> | 
+<%= link_to "Delete Request", admin_grant_application_path(@grant_application), method: :delete, confirm: "Are You Sure?" %> <br/><br/>
 
-
-  Attachment
-
-  <%= button_to @grant_application.attachment_url, {class: "btn btn-small", method: :get} do %>
-       File <i class="icon-paperclip"></i>
-  <% end %>
-
-
+Attachment
+<%= button_to @grant_application.attachment_url, {class: "btn btn-small", method: :get} do %>
+  File <i class="icon-paperclip"></i>
+<% end %>
 
 <%= form_for @grant_application, url: admin_grant_application_path(@grant_application) do |f| %>
-  <div>
-    <%= f.label "Request Amount: #{@grant_application.request_amount}"  %><br/>
-  </div>
-  <div>
-    <%= f.label "Intended Use: #{@grant_application.intended_use}" %><br/>
-  </div>
-
-
-
-  <div>
-  	<%= f.label "Reviewer Comments:" %><br/>
-    <%= f.text_area "comments" %>
-  </div>
-  <div>
-  	<%= f.label "status" %>
-  	<%= f.select(:status, [["Review Pending","Review Pending"],["Follow Up","Follow Up"],["Denied","Denied"],["Approved","Approved"]]) %>
-  </div>
-  <div>
-    <%= f.submit "Submit" %>
-  </div>
+<div>
+  <%= f.label "Request Amount: #{@grant_application.request_amount}"  %><br/>
+</div>
+<div>
+  <%= f.label "Intended Use: #{@grant_application.intended_use}" %><br/>
+</div>
+<div>
+  <%= f.label "Rating" %><br/>
+  <%= f.select(:rating, (1..10).to_a) %>
+</div>
+<div>
+	<%= f.label "Reviewer Comments:" %><br/>
+  <%= f.text_area :comments %>
+</div>
+<div>
+	<%= f.label "Status" %>
+	<%= f.select(:status, [["Review Pending","Review Pending"],["Follow Up","Follow Up"],["Denied","Denied"],["Approved","Approved"]]) %>
+</div>
+<div>
+  <%= f.submit "Submit" %>
+</div>
 <% end %>

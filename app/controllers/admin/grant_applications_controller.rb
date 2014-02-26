@@ -33,7 +33,7 @@ class Admin::GrantApplicationsController < Admin::AdminController
   protected
 
   def grant_application_params
-  	params.require(:grant_application).permit(:comments, :status, :attachment)
+  	params.require(:grant_application).permit(:comments, :status, :attachment, :rating)
   end
 
 end
