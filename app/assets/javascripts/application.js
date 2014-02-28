@@ -16,24 +16,11 @@
 //= require turbolinks
 //= require_tree .
 
-
-
- // $(document).ready(function() {
-
- // $('#form_id').hide(); //Initially form wil be hidden.
-
- //  $('#button_id').click(function() {
- //   $('#form_id').show();//Form shows on button click
-
- //   });
- // });
-
-
 $(document).ready(function(){
 	$('#new_org').hide().prop('disabled', true);
-	$('#link_create').click(function(){
-		$('#new_org').prop('disabled', false);
-		$('#select_org').toggle().prop('disabled', true);		
-
+	$('#link_create').click(function(event){
+		event.preventDefault();
+		$('#new_org').show().prop('disabled', false);
+		$('#select_org').hide().prop('disabled', true);		
 	});
 });
