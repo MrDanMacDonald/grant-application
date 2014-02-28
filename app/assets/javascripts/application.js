@@ -15,12 +15,3 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-
-	
-
-
-	// $(".clickableRow").click(function() {
-	//     // row was clicked
-	//     window.location.href = $(".clickableRow").attr("href");
-	// });
-

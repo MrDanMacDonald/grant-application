@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
+  
   def new
   end
 
   def create
     @user = User.find_by(email: params[:email])||User.find_by(username: params[:username])
-    
     if @user && @user.authenticate(params[:password])
       if @user.is_admin?
         session[:user_id] = @user.id

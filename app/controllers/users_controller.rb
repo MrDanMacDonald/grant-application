@@ -13,18 +13,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def profile
-    #redirect_to admin_grant_applications_path if current_user.is_admin?
-    @user = User.find(session[:user_id])
-    render :show
-  end
+  # def profile
+  #   @user = User.find(session[:user_id])
+  #   render :show
+  # end
 
   def create
     @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to profile_path
+      redirect_to organizations_path
     else 
       render :new
     end
@@ -48,7 +47,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :first_name, :last_name, :middle_initial, :org_name, :role_in_org, :org_website, :phone_number,
+      :first_name, :last_name, :middle_initial, :role_in_org, :org_website, :phone_number,
       :email, :password, :password_confirmation, :about, :username)
   end
 end

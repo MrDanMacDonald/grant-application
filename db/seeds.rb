@@ -5,12 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Plan.destroy_all
-plans = Plan.create([{ name: 'Bronze', price: 1999 }, { name: 'Silver', price: 2999 }, { name: 'Gold', price: 4999 }])
+# Plan.destroy_all
+# plans = Plan.create([{ name: 'Bronze', price: 1999 }, { name: 'Silver', price: 2999 }, { name: 'Gold', price: 4999 }])
 
-# subscriptions = Subscription.create([
-#   {user: 3, plan: 3, signup_date: 2014-02-16, next_payment_date: 2014-03-16}
-#   ])
-Subscription.destroy_all
-subscriptions = Subscription.create([{ next_payment_date: Date.today }])
+# Subscription.destroy_all
+# subscriptions = Subscription.create([{ next_payment_date: Date.today }])
+
+organizations = Organization.create([{name: 'Childrens Hospital'}, {name: 'Cancer Foundation'}])
 

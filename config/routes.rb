@@ -7,6 +7,7 @@ GrantApp::Application.routes.draw do
   
   get 'profile', to: 'users#profile', as: 'profile'
   
+  resources :organizations
   resources :users
 
   resource :subscriptions

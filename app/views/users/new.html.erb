@@ -6,7 +6,7 @@
 
 <% if @user.errors.any? %>
 <div>
-  <%= pluralize(@user.errors.count, "error")%> prevented this contact from being created: 
+  <%= pluralize(@user.errors.count, "error")%> prevented this profile from being created: 
     <ul>
       <%= @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -27,10 +27,6 @@
 <div>
   <%= f.label "last_name", "Last Name: " %>
   <%= f.text_field :last_name %>
-</div>
-<div>
-  <%= f.label "org_name", "Organization Name: " %>
-  <%= f.text_field :org_name %>
 </div>
 <div>
   <%= f.label "role_in_org", "Role in Organization: " %>

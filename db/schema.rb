@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226193339) do
+ActiveRecord::Schema.define(version: 20140227193844) do
 
   create_table "grant_applications", force: true do |t|
     t.integer  "request_amount"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 20140226193339) do
   end
 
   add_index "grant_applications", ["user_id"], name: "index_grant_applications_on_user_id", using: :btree
+
+  create_table "organizations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
 
   create_table "payments", force: true do |t|
     t.integer  "subscription_id"

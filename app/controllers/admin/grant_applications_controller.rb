@@ -3,7 +3,6 @@ class Admin::GrantApplicationsController < Admin::AdminController
 
   def index
     @grant_applications = GrantApplication.all
-    #render text: "You are admin."
   end
 
   def show
