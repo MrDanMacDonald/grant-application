@@ -5,7 +5,7 @@
 <%= form_for @user do |f| %>
 
 <% if @user.errors.any? %>
-<div>
+  <div>
   <%= pluralize(@user.errors.count, "error")%> prevented this profile from being created: 
     <ul>
       <%= @user.errors.full_messages.each do |msg| %>
@@ -23,8 +23,14 @@
   <%= f.label "last_name", "Last Name: " %>
   <%= f.text_field :last_name %>
 </div>
-<div>
-  <%= f.label "org_name", "Organization Name: " %>
+<div id="select_org">
+  <%= f.label "org_name", "Select Organization: " %>
+  <%= f.collection_select(:org_name, User.order(:org_name), :id, :org_name) %>
+</div>
+<div id="link_create"><%= link_to "Create New" %></div>
+<div> 
+<div id="new_org">
+  <%= f.label "org_name", "Create New Organization: " %>
   <%= f.text_field :org_name %>
 </div>
 <div>

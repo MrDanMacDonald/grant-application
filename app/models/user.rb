@@ -11,14 +11,9 @@ class User < ActiveRecord::Base
 
   def generate_org
     org = grab_organization
-
     unless org
       org = Organization.create!(name: self.org_name)
     end
-    # if org
-    # else
-    #   org = Organization.create!(name: self.org_name)
-    # end
     self.organization = org
   end
 
