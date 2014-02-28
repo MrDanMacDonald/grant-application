@@ -16,11 +16,22 @@
 //= require turbolinks
 //= require_tree .
 
+// FIXME: Code is not dry
 $(document).ready(function(){
 	$('#new_org').hide().prop('disabled', true);
+	$('#link_list').hide();
 	$('#link_create').click(function(event){
 		event.preventDefault();
 		$('#new_org').show().prop('disabled', false);
-		$('#select_org').hide().prop('disabled', true);		
+		$('#select_org').hide().prop('disabled', true);	
+		$('#link_create').hide();
+		$('#link_list').show();
+	});
+	$('#link_list').click(function(event){
+		event.preventDefault();
+		$('#new_org').hide().prop('disabled', true);
+		$('#select_org').show().prop('disabled', false);
+		$('#link_create').show();
+		$('#link_list').hide();
 	});
 });
