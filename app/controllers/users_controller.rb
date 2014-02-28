@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
   
   before_filter :current_user
@@ -13,10 +14,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # def profile
-  #   @user = User.find(session[:user_id])
-  #   render :show
-  # end
+  def profile
+    @user = User.find(session[:user_id])
+    render :show
+  end
 
   def create
     @user = User.new(user_params)
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :first_name, :last_name, :middle_initial, :role_in_org, :org_website, :phone_number,
-      :email, :password, :password_confirmation, :about, :username)
+      :first_name, :last_name, :middle_initial, :role_in_org, :org_name, :org_website, :phone_number,
+      :email, :password, :password_confirmation, :about, :username, :organization_id) 
   end
 end

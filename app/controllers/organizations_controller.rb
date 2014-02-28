@@ -46,7 +46,7 @@ class OrganizationsController < ApplicationController
   protected
 
   def organization_params
-    params.require(:organization).permit(:name, user_attributes: [:id, :first_name, :last_name, :phone_number, :email, :password, :password_confirmation])
+    params.require(:organization).permit(:name)
   end
 
 end

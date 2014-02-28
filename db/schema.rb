@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227193844) do
+ActiveRecord::Schema.define(version: 20140228065555) do
 
   create_table "grant_applications", force: true do |t|
     t.integer  "request_amount"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140227193844) do
     t.boolean  "is_admin",              default: false
     t.string   "username"
     t.string   "stripe_customer_token"
+    t.integer  "organization_id"
   end
 
 end
