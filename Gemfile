@@ -65,4 +65,7 @@ gem 'carrierwave'
 # Heroku from https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
 gem 'rails_12factor', group: :production
 
+# Datatables Gem
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
 ruby "2.0.0"

@@ -1,7 +1,8 @@
-<h2>Grant Request - 
-<%= @grant_application.user.first_name%> 
-<%= @grant_application.user.last_name%> from 
-<%= @grant_application.user.org_name %></h2>
+<h3>Welcome</h3>
+
+<strong><%= @grant_application.user.first_name%> 
+<%= @grant_application.user.last_name%><strong> from 
+<%= @grant_application.user.org_name %>
 <%= link_to "User Information", admin_user_path(@grant_application.user) %> | 
 <%= link_to "Delete Request", admin_grant_application_path(@grant_application), method: :delete, confirm: "Are You Sure?" %> <br/><br/>
 

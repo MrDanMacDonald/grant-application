@@ -1,6 +1,6 @@
 <h3>Welcome</h3>
 
-<table class="table table-hover">
+<table class="table table-hover" id="datatable">
   <thead>
     <tr>
       <th>Date of Application</th>
@@ -13,30 +13,37 @@
     </tr>
   </thead>
 
-  <% @grant_applications.each do |g| %>
+  <tbody>
+    <% @grant_applications.each do |g| %>
     
-    <tr class="clickableRow applicationsTable" href="/admin/grant_applications/<%=g.id%>/edit">
-      <th><%= g.created_at.strftime('%Y-%m-%d') %></th>
-      <td><%= g.id %></td>
-      <td>
-        <% if g.user.username %>
-          <%= g.user.username %>
+      <tr class="clickableRow applicationsTable" href="/admin/grant_applications/<%=g.id%>/edit">
+        <td><%= g.created_at.strftime('%Y-%m-%d') %></td>
+        <td><%= g.id %></td>
+
+        <td>
+          <% if g.user.username %>
+            <%= g.user.username %>
+          <% else %>
+            <%= g.user.email %>
+          <% end %>
+        </td>
+
+        <td><%= g.request_amount %></td>
+        <td><%= g.status %></td>
+        <td><%= g.rating %></td>
+        <!-- File button -->
+        <% if g.attachment_url != nil %>
+          <td style="padding: 1px;"><%= button_to g.attachment_url, {class: "btn btn-small", method: :get} do %>
+           File <i class="icon-paperclip"></i>
+            <% end %>
+          </td>
         <% else %>
-          <%= g.user.email %>
+          <td>No attachment</td>
         <% end %>
-      </td>
-      <td><%= g.request_amount %></td>
-      <td><%= g.status %></td>
-      <td><%= g.rating %></td>
-      <!-- File button -->
-      <% if g.attachment_url != nil %>
-      <td style="padding: 1px;"><%= button_to g.attachment_url, {class: "btn btn-small", method: :get} do %>
-       File <i class="icon-paperclip"></i>
-        <% end %>
-      <% end %></td>
-      <td>
-    </tr>
-  <% end %>
+  
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <script type="text/javascript">

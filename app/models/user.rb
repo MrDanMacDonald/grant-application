@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     self.organization = org
   end
 
+  # def create_organization(name)
+  #   self.organization.create(name: name)
+  # end
+
   def grab_organization
     Organization.where(name: self.org_name).first 
   end
