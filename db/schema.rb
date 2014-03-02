@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228065555) do
+ActiveRecord::Schema.define(version: 20140302023747) do
 
   create_table "grant_applications", force: true do |t|
     t.integer  "request_amount"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20140228065555) do
     t.string   "first_name"
     t.string   "middle_initial"
     t.string   "last_name"
-    t.string   "org_name"
     t.string   "role_in_org"
     t.string   "email"
     t.string   "password_digest"

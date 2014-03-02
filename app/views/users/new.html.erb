@@ -2,8 +2,7 @@
 
 <h3>Create a New Account</h3>
 
-<%= form_for @user do |f| %>
-
+<%= form_for @user, url: new_user_path do |f| %>
 <% if @user.errors.any? %>
   <div>
   <%= pluralize(@user.errors.count, "error")%> prevented this profile from being created: 
@@ -24,8 +23,8 @@
   <%= f.text_field :last_name %>
 </div>
 <div id="select_org">
-  <%= f.label "org_name", "Select Organization: " %>
-  <%= f.collection_select(:org_name, User.order(:org_name), :id, :org_name) %>
+  <%= f.label "name", "Select Organization: " %>
+  <%= f.collection_select(:organization_id, Organization.order(:name), :id, :name) %>
 </div>
 <div id="link_create"><%= link_to "Create New" %></div>
 <div> 
@@ -33,7 +32,7 @@
   <%= f.label "org_name", "Create New Organization: " %>
   <%= f.text_field :org_name %>
 </div>
-<div id="link_list"><%= link_to "Select Your Organizations" %></div>
+<div id="link_list"><%= link_to "Select Your Organization" %></div>
 <div>
   <%= f.label "phone_number", "Phone Number: " %>
   <%= f.text_field :phone_number %>

@@ -1,17 +1,10 @@
-require 'pry'
 class UsersController < ApplicationController
   
   before_filter :current_user
-
   before_filter :if_not_user_redirect, only: [:show, :edit, :update] 
 
-  def show
-    redirect_to admin_grant_applications_path if current_user.is_admin?
-    @user = User.find(params[:id])
-  end
-
   def new
-    @user = User.new
+    @user = OrgRegForm.new(User.new)
   end
 
   def profile
@@ -20,8 +13,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-
+    @user = OrgRegForm.new(User.new)
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -42,6 +34,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show
+    redirect_to admin_grant_applications_path if current_user.is_admin?
+    @user = User.find(params[:id])
   end
 
   protected
