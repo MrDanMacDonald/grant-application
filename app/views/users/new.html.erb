@@ -2,12 +2,12 @@
 
 <h3>Create a New Account</h3>
 
-<%= form_for @user, url: new_user_path do |f| %>
-<% if @user.errors.any? %>
+<%= form_for @org_reg_form, url: new_user_path do |f| %>
+<% if @org_reg_form.errors.any? %>
   <div>
-  <%= pluralize(@user.errors.count, "error")%> prevented this profile from being created: 
+  <%= pluralize(@org_reg_form.errors.count, "error")%> prevented this profile from being created: 
     <ul>
-      <%= @user.errors.full_messages.each do |msg| %>
+      <%= @org_reg_form.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
       <% end %>
     </ul>

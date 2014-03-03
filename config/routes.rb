@@ -6,6 +6,9 @@ GrantApp::Application.routes.draw do
   resources :grant_applications, only: [:index, :new, :create, :show, :destroy]
   
   get 'profile', to: 'users#profile', as: 'profile'
+
+  #Remove
+  post 'users/new' => 'users#create'
   
   resources :organizations
   resources :users

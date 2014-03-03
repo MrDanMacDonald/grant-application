@@ -2,11 +2,9 @@
 
 <h3>Your contact information | <%= link_to "edit", edit_user_path(@user) %></h3>
 <p>Your name: <%= @user.first_name %> <%= @user.middle_initial%> <%= @user.last_name %></p>
-<p>Organization: <%= @user.org_name %></p>
+<p>Organization: <%= @user.organization.name %></p>
 <p>Email: <%= @user.email %></p>
 <p>Phone Number: <%= @user.phone_number %></p>
-
-
 
 <h3>Grant Details</h3>
 <%= form_for @grant_application do |f| %>
