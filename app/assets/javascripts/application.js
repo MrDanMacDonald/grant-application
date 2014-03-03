@@ -18,8 +18,6 @@
 //= require turbolinks
 //= require_tree .
 
-
-// FIXME: Code is not dry
 $(document).ready(function(){
 	$('#new_org').hide().prop('disabled', true);
 	$('#link_list').hide();
@@ -38,3 +36,4 @@ $(document).ready(function(){
 		$('#link_list').hide();
 	});
 });
+

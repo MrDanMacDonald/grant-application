@@ -26,7 +26,7 @@ class Admin::GrantApplicationsController < Admin::AdminController
   def destroy
     @grant_application = GrantApplication.find(params[:id])
     @grant_application.destroy
-    redirect_to admin_grant_applications_path #update this when admin/ is up.
+    redirect_to admin_grant_applications_path 
   end
 
   protected

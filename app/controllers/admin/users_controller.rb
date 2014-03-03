@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::AdminController
   before_filter :if_not_user_redirect, only: [:show, :edit, :update] 
 
   def index
-  	@users = User.all
+  	@users = User.where('is_admin = false')
   end
 
   def show

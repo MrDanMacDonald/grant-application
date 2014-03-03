@@ -47,7 +47,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<%= admin_grant_applications_path %> ">AdminHome</a>
+          <!-- <a class="brand" href="<%= admin_grant_applications_path %> ">AdminHome</a> -->
+          <div class="brand"><%= link_to "Admin Home", admin_grant_applications_path %></div>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Grant Applications", admin_grant_applications_path %></li>

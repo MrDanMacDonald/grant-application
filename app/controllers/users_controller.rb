@@ -1,5 +1,3 @@
-require 'pry'
-
 class UsersController < ApplicationController
   
   before_filter :current_user
