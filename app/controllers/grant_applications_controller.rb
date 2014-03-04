@@ -23,8 +23,10 @@ class GrantApplicationsController < ApplicationController
     if @grant_application.save
       UserMailer.thankyou_email(@user).deliver
       AdminMailer.admin_notification_email(@admins, @grant_application).deliver
-      redirect_to user_path(@user.id)
-    else 
+      # redirect_to user_path(@user.id)
+      # redirect_to controller: 'grant_applications', action: 'select_grant_program'
+      redirect_to select_grant_program_grant_application_path(@grant_application)
+    else
       render :new, notice: "Your application was not successfully submitted"
     end
   end
@@ -35,6 +37,8 @@ class GrantApplicationsController < ApplicationController
   end
 
   def select_grant_program
+    @grant_application = GrantApplication.find(params[:id])
+    # render :select_grant_program
   end
 
   def add_grant_details

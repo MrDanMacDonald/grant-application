@@ -1,23 +1,18 @@
 GrantApp::Application.routes.draw do
-
-  get "programs/index"
-  get "programs/new"
-  get "programs/create"
-  get "programs/show"
-  get "programs/edit"
-  get "programs/update"
-  get "programs/destroy"
-  root to: 'static#index'
+root to: 'static#index'
   
   get 'remove_attachment/' => 'grant_applications#delete_attachment'
-  resources :grant_applications, only: [:index, :new, :create, :show, :destroy]
+  resources :grant_applications do
+     member do
+      put 'select_grant_program'
+      get 'select_grant_program', as: 'program'
+      put 'add_grant_details'
+      get 'add_grant_details', as: 'details'
+    end
+  end
+
   
   get 'profile', to: 'users#profile', as: 'profile'
-  put 'grant_applications/select_grant_program', to: 'grant_applications#select_grant_program', as: 'select_grant_program'
-  put 'grant_applications/add_grant_details', to: 'grant_applications#add_grant_details', as: 'add_grant_details'
-  put 'grant_applications/verify_eligibility', to: 'grant_applications#verify_eligibility', as: 'verify_eligibility'
-  put 'grant_applications/add_supplemental_info', to: 'grant_applications#add_supplemental_info', as: 'add_supplemental_info'
-
 
   #Remove
   post 'users/new' => 'users#create'

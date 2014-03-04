@@ -20,6 +20,9 @@
     <%= f.file_field :attachment %>
   </div>
   <div>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Save" %>
+  </div>
+  <div>
+    <%= link_to "Next",  details_grant_application_path(@grant_application) %>
   </div>
 <% end %>
