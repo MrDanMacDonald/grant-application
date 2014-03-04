@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302023747) do
+ActiveRecord::Schema.define(version: 20140304191202) do
 
   create_table "grant_applications", force: true do |t|
     t.integer  "request_amount"
@@ -33,30 +33,10 @@ ActiveRecord::Schema.define(version: 20140302023747) do
     t.string   "name"
   end
 
-  create_table "payments", force: true do |t|
-    t.integer  "subscription_id"
-    t.string   "cc_info"
+  create_table "programs", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount"
-    t.date     "charge_date"
-  end
-
-  create_table "plans", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "price"
-  end
-
-  create_table "subscriptions", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "plan_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.date     "next_payment_date"
-    t.date     "signup_date"
-    t.date     "cancel_date"
   end
 
   create_table "users", force: true do |t|
@@ -71,9 +51,8 @@ ActiveRecord::Schema.define(version: 20140302023747) do
     t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_admin",              default: false
+    t.boolean  "is_admin",        default: false
     t.string   "username"
-    t.string   "stripe_customer_token"
     t.integer  "organization_id"
   end
 

@@ -34,6 +34,18 @@ class GrantApplicationsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def select_grant_program
+  end
+
+  def add_grant_details
+  end
+
+  def verify_eligibility
+  end
+
+  def add_supplemental_info
+  end
+
   protected
 
   def grant_application_params

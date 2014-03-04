@@ -1,8 +1,8 @@
-
 class GrantApplication < ActiveRecord::Base  
 	
+  has_and_belongs_to_many :programs
 	belongs_to :user
-  	mount_uploader :attachment, AttachmentUploader
+  mount_uploader :attachment, AttachmentUploader
 
   def remove_attachment
   	path = "#{Rails.root}/public" + attachment_url
