@@ -1,0 +1,19 @@
+<h1>New Grant Program</h1>
+
+<%= form_for @program, url: admin_programs_path do |f| %>
+<div>
+  <%= f.label "name", "Name" %></br>
+  <%= f.text_field "name" %>
+</div>
+<div>
+  <%= f.label "description", "Description" %></br>
+  <%= f.text_field "description" %>
+</div>
+<div>
+  <%= f.submit "Submit" %>
+</div>
+<div>
+<%= link_to "Back", admin_programs_path %>
+</div>
+<% end %>
+

@@ -1,0 +1,9 @@
+<h1>Grant Programs</h1>
+
+<% @programs.each do |p| %>
+  <div>
+    <%= p.name %>
+  </div>
+<% end %>
+
+<%= link_to "Create a New Program", new_admin_program_path %>
