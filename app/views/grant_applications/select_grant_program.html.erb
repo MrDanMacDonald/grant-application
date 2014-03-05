@@ -4,14 +4,19 @@ Please indicate which grant program you are applying for.
 
 <%= form_for @grant_application, url: select_grant_program_update_grant_application_path(@grant_application)  do |f| %>
   <div class="checkbox inline">
+  <%= hidden_field_tag "grant_application[program_ids][]", nil %>
     <% Program.all.each do |program| %>
-      <%= check_box_tag "grant_application[program_ids][]", program.id %>
-      <%= program.name %><br>
+      <%= check_box_tag "grant_application[program_ids][]", program.id,
+      @grant_application.program_ids.include?(program.id), id: dom_id(program)%>
+      <%= label_tag dom_id(program), program.name %><br>
     <% end %>
   </div>
   <div>
     <%= f.submit "Save" %>
   </div>
 <% end %>
+<div>
+  <%= link_to "Back", new_grant_application_path(@grant_application) %>
+</div>
 
 
