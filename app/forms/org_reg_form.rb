@@ -1,3 +1,4 @@
+require 'pry'
 class OrgRegForm
   include ActiveModel::Model 
 
@@ -14,14 +15,18 @@ class OrgRegForm
   end
 
   def submit(params)
-    self.first_name = params[:first_name]
-    self.last_name = params[:last_name]
-    self.email = params[:email]
-    self.phone_number = params[:phone_number]
-    self.password = params[:password]
-    self.password_confirmation = params[:password_confirmation]
-    self.organization_id = params[:organization_id]
-    self.org_name = params[:org_name]
+    new_params = scrub_params(params)
+    # new_params.keys.each do |key|
+    #   self.send(key) = new_params[key]
+    # end
+    self.first_name = new_params[:first_name]
+    self.last_name = new_params[:last_name]
+    self.email = new_params[:email]
+    self.phone_number = new_params[:phone_number]
+    self.password = new_params[:password]
+    self.password_confirmation = new_params[:password_confirmation]
+    self.organization_id = new_params[:organization_id]
+    self.org_name = new_params[:org_name]
     # check form object validations
     if valid? 
       #assign attributes to user model object
@@ -33,7 +38,6 @@ class OrgRegForm
                        password_confirmation: self.password_confirmation,
                        organization_id: organization_id)
                       #checks usermodel validations
-      # generate_org unless self.organization_id
       generate_org
       @user.save!
       @user
@@ -44,6 +48,16 @@ class OrgRegForm
 
   protected
 
+  #refactor
+  def scrub_params(params)
+    if params[:org_name].present?
+      params.delete(:organization_id)
+      params
+    else
+      params
+    end
+  end
+  
   def generate_org
     org = grab_organization
     #if org is nil, create a new organization with name of org_name

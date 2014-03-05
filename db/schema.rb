@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304223004) do
+ActiveRecord::Schema.define(version: 20140305190431) do
 
   create_table "grant_applications", force: true do |t|
     t.integer  "request_amount"
@@ -23,9 +23,15 @@ ActiveRecord::Schema.define(version: 20140304223004) do
     t.text     "comments"
     t.string   "status",         default: "Review Pending"
     t.integer  "rating"
+    t.integer  "program_ids"
   end
 
   add_index "grant_applications", ["user_id"], name: "index_grant_applications_on_user_id", using: :btree
+
+  create_table "grant_applications_programs", id: false, force: true do |t|
+    t.integer "grant_application_id"
+    t.integer "program_id"
+  end
 
   create_table "organizations", force: true do |t|
     t.datetime "created_at"

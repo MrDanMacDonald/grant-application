@@ -4,9 +4,9 @@ root to: 'static#index'
   get 'remove_attachment/' => 'grant_applications#delete_attachment'
   resources :grant_applications do
      member do
-      put 'select_grant_program'
+      patch 'select_grant_program_update'
       get 'select_grant_program', as: 'program'
-      put 'add_grant_details'
+      patch 'add_grant_details_update'
       get 'add_grant_details', as: 'details'
     end
   end

@@ -23,25 +23,32 @@ class GrantApplicationsController < ApplicationController
     if @grant_application.save
       UserMailer.thankyou_email(@user).deliver
       AdminMailer.admin_notification_email(@admins, @grant_application).deliver
-      # redirect_to user_path(@user.id)
-      # redirect_to controller: 'grant_applications', action: 'select_grant_program'
-      redirect_to select_grant_program_grant_application_path(@grant_application)
+      redirect_to program_grant_application_path(@grant_application) 
     else
       render :new, notice: "Your application was not successfully submitted"
     end
   end
 
-  def delete_attachment
-    current_user.grant_applications.find(params[:app_id]).remove_attachment
-    redirect_to user_path(current_user)
+  def select_grant_program_update
+    @grant_application = GrantApplication.find(params[:id])
+    if @grant_application.update_attributes(grant_application_params)
+     # if @grant_application.update_attributes(grant_application_params[:program_ids])
+      redirect_to details_grant_application_path(@grant_application)
+    else
+      render :select_grant_program
+    end
   end
 
   def select_grant_program
     @grant_application = GrantApplication.find(params[:id])
-    # render :select_grant_program
+  end
+
+  def add_grant_details_update
+    @grant_application = GrantApplication.find(params[:id])
   end
 
   def add_grant_details
+    @grant_application = GrantApplication.find(params[:id])
   end
 
   def verify_eligibility
@@ -50,10 +57,15 @@ class GrantApplicationsController < ApplicationController
   def add_supplemental_info
   end
 
+  def delete_attachment
+    current_user.grant_applications.find(params[:app_id]).remove_attachment
+    redirect_to user_path(current_user)
+  end
+
   protected
 
   def grant_application_params
-    params.require(:grant_application).permit(:request_amount, :intended_use, :attachment)
+    params.require(:grant_application).permit(:request_amount, :intended_use, :attachment, {:program_ids => []})
   end
 
 end

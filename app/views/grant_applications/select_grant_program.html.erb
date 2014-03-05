@@ -1,3 +1,17 @@
 <h1>Select Grant Program</h1>
 
 Please indicate which grant program you are applying for.
+
+<%= form_for @grant_application, url: select_grant_program_update_grant_application_path(@grant_application)  do |f| %>
+  <div class="checkbox inline">
+    <% Program.all.each do |program| %>
+      <%= check_box_tag "grant_application[program_ids][]", program.id %>
+      <%= program.name %><br>
+    <% end %>
+  </div>
+  <div>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
+
+
