@@ -44,8 +44,8 @@ class GrantApplicationsController < ApplicationController
 
   def add_grant_details_update
     @grant_application = GrantApplication.find(params[:id])
-
-    if @grant_application.update_attributes(params[:grant_application][:grant_applications])
+   
+    if @grant_application.update_attributes(grant_application_params)
       redirect_to profile_path
     else
       render add_grant_details
@@ -70,7 +70,7 @@ class GrantApplicationsController < ApplicationController
   protected
 
   def grant_application_params
-    params.require(:grant_application).permit(:request_amount, :intended_use, :attachment, :grant_type => [], :program_ids => [])
+    params.require(:grant_application).permit(:request_amount, :intended_use, :attachment, :grant_types => [], :program_ids => [])
   end
 
 end

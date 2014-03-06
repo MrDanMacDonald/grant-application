@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305222938) do
+ActiveRecord::Schema.define(version: 20140306202311) do
 
   create_table "grant_applications", force: true do |t|
     t.integer  "request_amount"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140305222938) do
     t.string   "status",         default: "Review Pending"
     t.integer  "rating"
     t.integer  "program_ids"
-    t.string   "grant_type"
+    t.string   "grant_types",    default: [],               array: true
   end
 
   add_index "grant_applications", ["user_id"], name: "index_grant_applications_on_user_id", using: :btree

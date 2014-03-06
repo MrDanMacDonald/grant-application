@@ -2,16 +2,7 @@
 
 <%= form_for @grant_application, url: add_grant_details_update_grant_application_path(@grant_application) do |f| %>
   <div class="checkbox inline">
-    <%= f.check_box :grant_type, { :multiple => true }, 'foo', nil %>
-  </div><br>
-  <div class="checkbox inline">
-    <%= f.check_box :grant_type, { :multiple => true }, 'bar', nil %>
-  </div><br>
-  <div class="checkbox inline"> 
-    <%= f.check_box :grant_type, { :multiple => true }, 'bam', nil %>
-  </div><br>
-  <div class="checkbox inline">
-    <%= f.check_box :grant_type, { :multiple => true }, 'baz', nil %>
+    <%= f.check_box :grant_types, { :multiple => true }, 'foo', nil %>
   </div><br>
   <div>
     <%= f.submit "Save" %>
