@@ -2,9 +2,30 @@
 
 <%= form_for @grant_application, url: add_grant_details_update_grant_application_path(@grant_application) do |f| %>
   <div class="checkbox inline">
-    <%= f.check_box :grant_types, { :multiple => true }, 'foo', nil %>
+    <%= f.check_box :grant_types, { :multiple => true }, 'General Operations', nil %>
+    <%= 'General Operations' %>
   </div><br>
-  <div>
+  <div class="checkbox inline">
+    <%= f.check_box :grant_types, { :multiple => true }, 'Capital Management', nil %>
+    <%= 'Capital Management' %>
+  </div><br>
+   <div class="checkbox inline">
+    <%= f.check_box :grant_types, { :multiple => true }, 'Program', nil %>
+    <%= 'Program' %>
+  </div><br>
+   <div class="checkbox inline">
+    <%= f.check_box :grant_types, { :multiple => true }, 'Equipment', nil %>
+    <%= 'Equipment' %>
+  </div><br>
+   <div class="checkbox inline" id="other">
+    <%= f.check_box :grant_types, { :multiple => true }, 'Other', nil %>
+    <%= 'Other' %>
+  </div><br>
+  <div id="create_other">
+    <%= f.label :custom_grant_type, "Please Specify: " %>
+    <%= f.text_field :custom_grant_type %>
+  </div><br>
+  <div class="checkbox inline">
     <%= f.submit "Save" %>
   </div>
   <br>

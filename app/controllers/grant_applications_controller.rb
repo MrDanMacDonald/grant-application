@@ -44,8 +44,9 @@ class GrantApplicationsController < ApplicationController
 
   def add_grant_details_update
     @grant_application = GrantApplication.find(params[:id])
-   
+    set_grant_type_to_custom
     if @grant_application.update_attributes(grant_application_params)
+      binding.pry
       redirect_to profile_path
     else
       render add_grant_details
@@ -70,7 +71,15 @@ class GrantApplicationsController < ApplicationController
   protected
 
   def grant_application_params
-    params.require(:grant_application).permit(:request_amount, :intended_use, :attachment, :grant_types => [], :program_ids => [])
+    @grant_application_params ||= params.require(:grant_application).permit(:request_amount, :intended_use, :attachment, :custom_grant_type, :grant_types => [], :program_ids => [])
+  end
+
+  def set_grant_type_to_custom
+     if grant_application_params[:custom_grant_type].present?
+      grant_application_params[:grant_types] = grant_application_params[:custom_grant_type].split(" ")
+    else
+      grant_application_params[:grant_types]
+    end
   end
 
 end

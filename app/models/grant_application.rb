@@ -4,6 +4,7 @@ class GrantApplication < ActiveRecord::Base
 	belongs_to :user
   mount_uploader :attachment, AttachmentUploader
   accepts_nested_attributes_for :programs
+  attr_accessor :custom_grant_type
 
   def remove_attachment
   	path = "#{Rails.root}/public" + attachment_url
