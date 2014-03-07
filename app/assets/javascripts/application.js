@@ -21,6 +21,7 @@
 $(document).ready(function(){
 	$('#new_org').hide().prop('disabled', true);
 	$('#link_list').hide();
+	$('#create_other').hide();
 	$('#link_create').click(function(event){
 		event.preventDefault();
 		$('#new_org').show().prop('disabled', false);
@@ -35,5 +36,8 @@ $(document).ready(function(){
 		$('#link_create').show();
 		$('#link_list').hide();
 	});
+	$('#other').click(function(event){
+		$('#create_other').toggle();
+	})
 });
 
