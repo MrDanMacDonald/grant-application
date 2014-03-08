@@ -8,11 +8,8 @@ root to: 'static#index'
       get 'select_grant_program', as: 'program'
       patch 'add_grant_details_update'
       get 'add_grant_details', as: 'details'
-      patch 'verify_eligibility_update'
-      get 'verify_eligibility', as: 'verify'
     end
   end
-
   
   get 'profile', to: 'users#profile', as: 'profile'
 

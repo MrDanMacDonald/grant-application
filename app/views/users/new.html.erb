@@ -3,52 +3,52 @@
 <h3>Create a New Account</h3>
 
 <%= form_for @user do |f| %>
-<% if @user.errors.any? %>
-  <div>
-  <%= pluralize(@user.errors.count, "error")%> prevented this profile from being created: 
-    <ul>
-      <%= @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @user.errors.any? %>
+    <div>
+    <%= pluralize(@user.errors.count, "error")%> prevented this profile from being created: 
+      <ul>
+        <%= @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div>
-  <%= f.label "first_name", "First Name: " %>
-  <%= f.text_field :first_name %>
-</div>
-<div>
-  <%= f.label "last_name", "Last Name: " %>
-  <%= f.text_field :last_name %>
-</div>
-<div id="select_org">
-  <%= f.label "name", "Select Organization: " %>
-  <%= f.collection_select(:organization_id, Organization.order(:name), :id, :name) %>
-</div>
-<div id="link_create"><%= link_to "Create New" %></div>
-<div id="new_org">
-  <%= f.label "org_name", "Create New Organization: " %>
-  <%= f.text_field :org_name %>
-</div>
-<div id="link_list"><%= link_to "Select Your Organization" %></div>
-<div>
-  <%= f.label "phone_number", "Phone Number: " %>
-  <%= f.text_field :phone_number %>
-</div>
-<div>
-  <%= f.label "email", "Email: " %>
-  <%= f.text_field :email %>
-</div>
-<div>
-  <%= f.label "password" %>
-  <%= f.password_field "password" %>
-</div>
-<div>
-  <%= f.label "password_confirmation" %>
-  <%= f.password_field "password_confirmation" %>
-</div>
-<div><%= f.submit "Create Account" %></div>
+  <div>
+    <%= f.label "first_name", "First Name: " %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div>
+    <%= f.label "last_name", "Last Name: " %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div id="select_org">
+    <%= f.label "name", "Select Organization: " %>
+    <%= f.collection_select(:organization_id, Organization.order(:name), :id, :name) %>
+  </div>
+  <div id="link_create"><%= link_to "Create New" %></div>
+  <div id="new_org">
+    <%= f.label "org_name", "Create New Organization: " %>
+    <%= f.text_field :org_name %>
+  </div>
+  <div id="link_list"><%= link_to "Select Your Organization" %></div>
+  <div>
+    <%= f.label "phone_number", "Phone Number: " %>
+    <%= f.text_field :phone_number %>
+  </div>
+  <div>
+    <%= f.label "email", "Email: " %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label "password" %>
+    <%= f.password_field "password" %>
+  </div>
+  <div>
+    <%= f.label "password_confirmation" %>
+    <%= f.password_field "password_confirmation" %>
+  </div>
+  <div><%= f.submit "Create Account" %></div>
 <% end %>
 
  

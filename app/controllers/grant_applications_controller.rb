@@ -47,7 +47,7 @@ class GrantApplicationsController < ApplicationController
     @grant_application = GrantApplication.find(params[:id])
     set_grant_type_to_custom
     if @grant_application.update_attributes(grant_application_params)
-      redirect_to verify_grant_application_path(@grant_application)
+      redirect_to profile_path
     else
       render :add_grant_details
     end
@@ -55,22 +55,6 @@ class GrantApplicationsController < ApplicationController
 
   def add_grant_details
     @grant_application = GrantApplication.find(params[:id])
-  end
-
-  def verify_eligibility
-    @grant_application = GrantApplication.find(params[:id])
-  end
-
-  def verify_eligibility_update
-    @grant_application = GrantApplication.find(params[:id])
-    # @user = @grant_application.user
-    # @organization = @user.organization
-    if @grant_application.update_attributes(grant_application_params)
-      binding.pry
-      redirect_to profile_path
-    else 
-      render :verify_eligibility
-    end
   end
 
   def add_supplemental_info
@@ -85,7 +69,7 @@ class GrantApplicationsController < ApplicationController
 
   def grant_application_params
     @grant_application_params ||= params.require(:grant_application).permit(:request_amount, :intended_use, :attachment, 
-      :custom_grant_type, organizations_attributes: [ :id, :business_number ], :grant_types => [], :program_ids => [])  
+      :custom_grant_type, organizations_attributes: [ :business_number ], :grant_types => [], :program_ids => [])  
   end
 
   def set_grant_type_to_custom
