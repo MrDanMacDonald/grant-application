@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306202311) do
+ActiveRecord::Schema.define(version: 20140307011214) do
 
   create_table "grant_applications", force: true do |t|
     t.integer  "request_amount"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140306202311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "business_number"
+    t.boolean  "is_qualified_donee"
   end
 
   create_table "programs", force: true do |t|

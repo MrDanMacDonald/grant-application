@@ -16,9 +16,6 @@ class OrgRegForm
 
   def submit(params)
     new_params = scrub_params(params)
-    # new_params.keys.each do |key|
-    #   self.send(key) = new_params[key]
-    # end
     self.first_name = new_params[:first_name]
     self.last_name = new_params[:last_name]
     self.email = new_params[:email]

@@ -2,8 +2,10 @@ class GrantApplication < ActiveRecord::Base
 	
   has_and_belongs_to_many :programs
 	belongs_to :user
+  belongs_to :organization
   mount_uploader :attachment, AttachmentUploader
   accepts_nested_attributes_for :programs
+  accepts_nested_attributes_for :organization
   attr_accessor :custom_grant_type
 
   def remove_attachment

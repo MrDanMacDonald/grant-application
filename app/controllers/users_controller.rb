@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   before_filter :if_not_user_redirect, only: [:show, :edit, :update] 
 
   def new
-    @org_reg_form = OrgRegForm.new(User.new)
+    @user = User.new
+    @organization = Organization.new
+    @organizations = Organization.all
   end
 
   def profile
@@ -13,8 +15,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @org_reg_form = OrgRegForm.new(User.new)
-    if @user = @org_reg_form.submit(params[:org_reg_form])
+  @user = User.new(user_params)
+    if @user.save(user_params)
       session[:user_id] = @user.id
       redirect_to profile_path, notice: "Successfully registered."
     else 
@@ -38,6 +40,13 @@ class UsersController < ApplicationController
   def show
     redirect_to admin_grant_applications_path if current_user.is_admin?
     @user = User.find(session[:user_id])
+  end
+
+  protected
+
+  def user_params
+    params.require(:user).permit(:org_name, :first_name, :last_name, :email, :phone_number, :password, :password_confirmation,
+                          :organization_id, {:organizations => [ :name, :organization_id ]})
   end
 
 end

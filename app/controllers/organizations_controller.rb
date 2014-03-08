@@ -46,7 +46,7 @@ class OrganizationsController < ApplicationController
   protected
 
   def organization_params
-    params.require(:organization).permit(:name)
+    params.require(:organization).permit(:name, :business_number, :is_qualified_donee)
   end
 
 end

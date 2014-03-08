@@ -10,7 +10,7 @@ Please indicate which grant program you are applying for.
       @grant_application.program_ids.include?(program.id), id: dom_id(program)%>
       <%= label_tag dom_id(program), program.name %><br>
     <% end %>
-  </div>
+  </div><br>
   <div>
     <%= f.submit "Save" %>
   </div>
@@ -18,5 +18,4 @@ Please indicate which grant program you are applying for.
 <div>
   <%= link_to "Back", new_grant_application_path(@grant_application) %>
 </div>
-
 

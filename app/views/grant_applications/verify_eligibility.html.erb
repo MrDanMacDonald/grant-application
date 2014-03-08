@@ -1,0 +1,16 @@
+<h1>Verify Eligibility</h1>
+
+<%= form_for @grant_application, url: verify_eligibility_update_grant_application_path(@grant_application) do |f| %>
+  <%= 'Is your organization a registered charity or other qualified done as defined under the income tax act?' %>
+  <%= f.fields_for :organizations do |builder| %>
+    <div>
+    <%= builder.label :business_number, "Business Number" %>
+    <%= builder.text_field :business_number %>
+    </div>
+  <% end %>
+   <div>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
+
+

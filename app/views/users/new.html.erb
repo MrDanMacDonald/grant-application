@@ -2,12 +2,12 @@
 
 <h3>Create a New Account</h3>
 
-<%= form_for @org_reg_form, url: new_user_path do |f| %>
-<% if @org_reg_form.errors.any? %>
+<%= form_for @user do |f| %>
+<% if @user.errors.any? %>
   <div>
-  <%= pluralize(@org_reg_form.errors.count, "error")%> prevented this profile from being created: 
+  <%= pluralize(@user.errors.count, "error")%> prevented this profile from being created: 
     <ul>
-      <%= @org_reg_form.errors.full_messages.each do |msg| %>
+      <%= @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
       <% end %>
     </ul>
@@ -27,7 +27,6 @@
   <%= f.collection_select(:organization_id, Organization.order(:name), :id, :name) %>
 </div>
 <div id="link_create"><%= link_to "Create New" %></div>
-<div> 
 <div id="new_org">
   <%= f.label "org_name", "Create New Organization: " %>
   <%= f.text_field :org_name %>

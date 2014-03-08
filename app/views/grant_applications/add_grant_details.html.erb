@@ -3,32 +3,31 @@
 <%= form_for @grant_application, url: add_grant_details_update_grant_application_path(@grant_application) do |f| %>
   <div class="checkbox inline">
     <%= f.check_box :grant_types, { :multiple => true }, 'General Operations', nil %>
-    <%= 'General Operations' %>
+    <%= label_tag(:grant_types_general_operations, 'General Operations') %>
   </div><br>
   <div class="checkbox inline">
     <%= f.check_box :grant_types, { :multiple => true }, 'Capital Management', nil %>
-    <%= 'Capital Management' %>
+    <%= label_tag(:grant_types_capital_management, 'Captial Management') %>
   </div><br>
    <div class="checkbox inline">
     <%= f.check_box :grant_types, { :multiple => true }, 'Program', nil %>
-    <%= 'Program' %>
+    <%= label_tag(:grant_types_program, 'Program') %>
   </div><br>
    <div class="checkbox inline">
     <%= f.check_box :grant_types, { :multiple => true }, 'Equipment', nil %>
-    <%= 'Equipment' %>
+    <%= label_tag(:grant_types_equipment, 'Equipment') %>
   </div><br>
    <div class="checkbox inline" id="other">
     <%= f.check_box :grant_types, { :multiple => true }, 'Other', nil %>
-    <%= 'Other' %>
+    <%= label_tag(:grant_types_other, 'Other') %>
   </div><br>
   <div id="create_other">
     <%= f.label :custom_grant_type, "Please Specify: " %>
     <%= f.text_field :custom_grant_type %>
   </div><br>
-  <div class="checkbox inline">
+  <div>
     <%= f.submit "Save" %>
   </div>
-  <br>
 <% end %>
 <div>
   <%= link_to "Back", program_grant_application_path(@grant_application) %>
