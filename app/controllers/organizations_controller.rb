@@ -29,11 +29,23 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization = Organization.find(params[:id])
-
     if @organization.update_attributes(organization_params)
       redirect_to organizations_path
     else
       render :edit
+    end
+  end
+
+  def verify_eligibility
+    @organization = Organization.find(params[:id])
+  end
+
+  def verify_eligibility_update
+    @organization = Organization.find(params[:id])
+    if @organization.update_attributes(organization_params)
+      redirect_to profile_path
+    else 
+      render :verify_eligibility
     end
   end
 

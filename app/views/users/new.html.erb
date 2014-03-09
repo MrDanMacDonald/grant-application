@@ -15,29 +15,29 @@
   <% end %>
 
   <div>
-    <%= f.label "first_name", "First Name: " %>
+    <%= f.label "first_name", "First Name" %>
     <%= f.text_field :first_name %>
   </div>
   <div>
-    <%= f.label "last_name", "Last Name: " %>
+    <%= f.label "last_name", "Last Name" %>
     <%= f.text_field :last_name %>
   </div>
   <div id="select_org">
-    <%= f.label "name", "Select Organization: " %>
+    <%= f.label "name", "Select Organization" %>
     <%= f.collection_select(:organization_id, Organization.order(:name), :id, :name) %>
   </div>
   <div id="link_create"><%= link_to "Create New" %></div>
   <div id="new_org">
-    <%= f.label "org_name", "Create New Organization: " %>
+    <%= f.label "org_name", "Create New Organization" %>
     <%= f.text_field :org_name %>
   </div>
   <div id="link_list"><%= link_to "Select Your Organization" %></div>
   <div>
-    <%= f.label "phone_number", "Phone Number: " %>
+    <%= f.label "phone_number", "Phone Number" %>
     <%= f.text_field :phone_number %>
   </div>
   <div>
-    <%= f.label "email", "Email: " %>
+    <%= f.label "email", "Email" %>
     <%= f.text_field :email %>
   </div>
   <div>
@@ -45,7 +45,7 @@
     <%= f.password_field "password" %>
   </div>
   <div>
-    <%= f.label "password_confirmation" %>
+    <%= f.label "password_confirmation", "Password Confirmation" %>
     <%= f.password_field "password_confirmation" %>
   </div>
   <div><%= f.submit "Create Account" %></div>

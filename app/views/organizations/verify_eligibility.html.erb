@@ -1,0 +1,18 @@
+<h1>Verify Eligibility</h1><br>
+
+<%= form_for @organization, url:  verify_eligibility_update_organization_path(@organization) do |f| %>
+  <div class="checkbox inline">
+    <%= f.check_box :is_qualified_donee, {}, 1, 0 %>
+    <%= label_tag :is_qualified_donee, "#{@organization.name} is a qualified donee" %><br>
+  </div>
+  <div>
+    <%= f.label :business_number, "Business Number" %>
+    <%= f.text_field :business_number %>
+  </div><br>
+  <div>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
+<div>
+  <%= link_to "Back", details_grant_application_path(@grant_application) %>
+</div>

@@ -47,7 +47,7 @@ class GrantApplicationsController < ApplicationController
     @grant_application = GrantApplication.find(params[:id])
     set_grant_type_to_custom
     if @grant_application.update_attributes(grant_application_params)
-      redirect_to profile_path
+      redirect_to verification_organization_path(@grant_application.user.organization)
     else
       render :add_grant_details
     end

@@ -16,7 +16,12 @@ root to: 'static#index'
   #Remove
   post 'users/new' => 'users#create'
   
-  resources :organizations
+  resources :organizations do
+    member do
+      patch 'verify_eligibility_update'
+      get 'verify_eligibility', as: 'verification'
+    end
+  end
   resources :users
 
   resource :subscriptions
